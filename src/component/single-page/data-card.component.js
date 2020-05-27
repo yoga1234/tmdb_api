@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
 
 class DataCard extends Component {
+
   render() {
+    let movieData = this.props.movieSingle;
+    const IMAGE_URL = "https://image.tmdb.org/t/p/w185"
+    const genresItems = movieData.genres ? movieData.genres.map((genre) =>
+      <span>{genre.name + " | "}</span>
+    ) : [];
+
     return (
       <div className="container mt-3">
         <div className="card">
           <div className="card-body">
             <div className="row">
               <div className="col-sm-4">
-                <img src="https://via.placeholder.com/150" className="card-img-top" alt="placeholder goes here" />  
+                <img src={IMAGE_URL + movieData.poster_path} className="card-img-top" alt="placeholder goes here" />  
               </div>
               <div className="col-sm-8">
-                <h3>Title will goes here</h3>
-                <p className="lead">Tagline will goes here</p>
-                <p className="text-muted">Genre, will, goes, here</p>
+                <h3>{movieData.title}</h3>
+                <p className="lead">{movieData.tagline}</p>
+                <p className="text-muted">
+                  {
+                    genresItems
+                  }
+                </p>
                 <hr />
                 <h5>Overview</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, natus praesentium aut ad nihil et voluptas numquam quos tempora eligendi, exercitationem, adipisci placeat? Molestiae ex voluptatem laboriosam placeat molestias id!</p>
+                <p>{movieData.overview}</p>
                 <div className="row">
                   <div className="col-sm-3">
                     <div className="card text-center">
@@ -25,7 +36,7 @@ class DataCard extends Component {
                       </div>
                       <div className="card-body">
                         <div className="card-subtitle">
-                          8.5
+                          {movieData.vote_average}
                         </div>
                       </div>
                     </div>
@@ -37,7 +48,7 @@ class DataCard extends Component {
                       </div>
                       <div className="card-body">
                         <div className="card-subtitle">
-                          1.000.000
+                          {movieData.popularity}
                         </div>
                       </div>
                     </div>
@@ -49,7 +60,7 @@ class DataCard extends Component {
                       </div>
                       <div className="card-body">
                         <div className="card-subtitle">
-                          1999-99-99
+                          {movieData.release_date}
                         </div>
                       </div>
                     </div>

@@ -13,9 +13,9 @@ class Homepage extends Component {
   }
 
   componentDidMount(){
-    const ENDPOINT = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+    const ENDPOINT_LIST_MOVIE = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
     
-    fetch(ENDPOINT)
+    fetch(ENDPOINT_LIST_MOVIE)
       .then(res => res.json())
       .then((data) => {
         this.setState({

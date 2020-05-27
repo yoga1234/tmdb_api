@@ -15,7 +15,7 @@ class Card extends Component {
               <div className="card-body">
                 <h5 className="card-title text-truncate">{movie.title}</h5>
                 <p className="card-text text-truncate">{movie.overview}</p>
-                <Link to="/single-page" className="btn btn-primary">Detail</Link>
+                <Link to={"/single-page/" + movie.id} className="btn btn-primary">Detail</Link>
               </div>
             </div>
           </div>
