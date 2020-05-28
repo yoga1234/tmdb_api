@@ -14,6 +14,7 @@ function App() {
         <Navbar />
         <Route path="/" exact component={Homepage} />
         <Route path="/single-page/:id" component={SinglePage} />
+        <Route path="/page/:pageNumber" component={Homepage} />
       </Router>
       <Footer />
     </div>
