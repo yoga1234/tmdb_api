@@ -18,6 +18,7 @@ class Homepage extends Component {
   
   state = {
     movies: [],
+    maximumPages: 0,
     page: 1
   }
   
@@ -32,9 +33,8 @@ class Homepage extends Component {
     .then(res => res.json())
     .then((data) => {
       this.setState({
-        movies: data.results
-      }, function() {
-        console.log(this.state)
+        movies: data.results,
+        maximumPages: data.total_pages
       })
     })
     .catch(console.log)
@@ -61,7 +61,7 @@ class Homepage extends Component {
       <Fragment>
         <Header />
         <Card MovieData={this.state.movies} />
-        <Pagination pageNumber={this.state.page} paging={this.pageHandler}/>
+        <Pagination maxPage={this.state.maximumPages} pageNumber={this.state.page} paging={this.pageHandler}/>
       </Fragment>
     )
   }
